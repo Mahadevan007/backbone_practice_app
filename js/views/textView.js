@@ -21,6 +21,7 @@ app.Textview = Backbone.View.extend({
   },
 
   onDelete:function(){
+   this.bus.trigger("removetext",this.model.get("text"))
    this.remove()
    this.model.destroy()
   },

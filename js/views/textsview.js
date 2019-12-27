@@ -12,8 +12,17 @@ app.TextsView =  Backbone.View.extend({
   initialize:function(options){
    $("#text").val("")
    this.bus = options.bus
+   this.listenTo(this.collection,"remove",this.checkremove)
    this.listenTo(this.collection,"add",this.renderText)
    this.render()
+  },
+
+  checkremove:function(text){
+    if(this.collection.length==0){
+	this.bus.trigger("clearall")
+    } else {
+        this.bus.trigger("removetext",text)
+    }
   },
 
  
@@ -27,7 +36,7 @@ app.TextsView =  Backbone.View.extend({
   },
 
   onkeypress:function(e){
-   if(e.which!==13&&!this.input.val().trim()){
+   if(e.which!==13){
 	return;
    }
    else
