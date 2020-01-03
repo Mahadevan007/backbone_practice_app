@@ -1,9 +1,15 @@
 #main {
-  width:50%;
-  float:left;
+  width: 50%;
+  float: left;
 }
 
-#newtexttemplate{
-  width:50%;
-  float:right;
+#newtexttemplate {
+  width: 50%;
+  float: right;
+}
+
+#nav li {
+  cursor: pointer;
+  display: inline;
+  padding: 20px;
 }
